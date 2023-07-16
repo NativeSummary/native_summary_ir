@@ -18,6 +18,7 @@ public class Function implements Serializable {
     // parsed from signature
     public List<Param> params = new ArrayList<>();
     public Type returnType;
+    public String comment;
 
     @Override
     public String toString() {
@@ -40,6 +41,6 @@ public class Function implements Serializable {
             sb.append("  ").append(i.toString()).append("\n");
         }
         sb.append("}");
-        return sb.toString();
+        return "; " + comment + "\n" + sb.toString();
     }
 }
