@@ -1,6 +1,7 @@
 # native summary IR
 
-1. type system is currently unused. backend uses an analysis to find the soot type.
+1. Type system is currently unused. backend uses an analysis to find the soot type.
+2. All `CallXXXMethodA/CallXXXMethodV` should be converted to non A/V varient before generate to IR.
 
 ### Function
 
