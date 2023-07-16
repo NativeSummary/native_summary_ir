@@ -19,7 +19,7 @@ public abstract class Instruction extends User implements Serializable {
         b.append(getOpString());
         var sj = new StringJoiner(", ", " ", "");
         oprands.forEach(use -> sj.add(use.value.toValueString()));
-        b.append(sj.toString());
+        b.append(sj);
         if (comments != null) {
             b.append("     ; ").append(comments);
         }
