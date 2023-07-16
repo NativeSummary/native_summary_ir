@@ -1,10 +1,8 @@
 package moe.wjk.ir.inst;
 
-import com.google.gson.JsonElement;
-import moe.wjk.ir.Instruction;
-
 import java.util.Arrays;
-import java.util.List;
+
+import moe.wjk.ir.Instruction;
 
 public class Call extends Instruction {
     // keep sync with JNIValue

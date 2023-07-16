@@ -5,7 +5,7 @@ import moe.wjk.ir.utils.Type;
 import moe.wjk.ir.utils.Value;
 
 public class Number extends Constant {
-    java.lang.Number val;
+    public java.lang.Number val;
     public static Number ofLong(Long l) {
         Number v = new Number();
         v.val = l;

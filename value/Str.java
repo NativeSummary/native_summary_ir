@@ -5,7 +5,7 @@ import moe.wjk.ir.utils.Type;
 import moe.wjk.ir.utils.Value;
 
 public class Str extends Constant {
-    String val;
+    public String val;
     public static Str of(String s) {
         Str ret = new Str();
         ret.val = s;
