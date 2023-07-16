@@ -23,13 +23,14 @@ public class Value implements Serializable {
         uses.remove(use);
     }
 
-//    public void replaceAllUseWith(Value v) {
-//        for (var u: uses) {
-//            assert u.value == this;
-//            var newu = new Use(u.user, v);
-//            u.user.replaceUseWith(u, newu);
-//        }
-//    }
+   public void replaceAllUseWith(Value v) {
+        assert v != this;
+        for (Use u: uses) {
+            assert u.value == this;
+            Use newu = new Use(u.user, v);
+            u.user.replaceUseWith(u, newu);
+        }
+    }
 
     public String toValueString() {
         if (type!=null && type.ty != null && type.ty == Type.BaseType.VOID) {
