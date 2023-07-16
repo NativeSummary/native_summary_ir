@@ -1,5 +1,8 @@
 package moe.wjk.ir;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import moe.wjk.ir.utils.Constant;
 import moe.wjk.ir.utils.Type;
 import moe.wjk.ir.utils.Value;
@@ -22,9 +25,19 @@ public class NumValueNamer {
         i.getUses().forEach(use -> visitValue(use.value));
     }
 
+    public boolean isTempName(String name) {
+        return name == null || name.matches("[0-9]+");
+    }
+
+    public Map<Value, Boolean> visited = new HashMap<>();
+
     public void visitValue(Value i) {
-        if ((i.type == null || i.type.ty == null || !i.type.ty.equals(Type.BaseType.VOID)) && i.name == null && (!(i instanceof Constant))) {
-            i.name = String.valueOf(count++);
+        if ((i.type == null || i.type.ty == null || !i.type.ty.equals(Type.BaseType.VOID)) && isTempName(i.name) && (!(i instanceof Constant))) {
+            // 当后面的指令引用前面指令的返回值的时候，会再次访问前面的指令。
+            if (!visited.containsKey(i)) {
+                i.name = String.valueOf(count++);
+                visited.put(i, true);
+            }
         }
     }
 }
