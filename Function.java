@@ -6,6 +6,7 @@ import moe.wjk.ir.value.Param;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -15,12 +16,34 @@ public class Function implements Serializable {
     public String signature;
     // TODO basicblock and control flow
     // null for declaration
-    public List<Instruction> insts = new ArrayList<>();
+    List<Instruction> insts = new ArrayList<>();
     // parsed from signature
     public List<Param> params = new ArrayList<>();
     public Type returnType;
     public String comment;
     public Call registeredBy;
+
+    void setParent(Instruction inst) {
+        if (inst.parent == null) {
+            inst.parent = this;
+        }
+    }
+
+    public boolean add(Instruction inst) {
+        setParent(inst);
+        return insts.add(inst);
+    }
+
+    public boolean addAll(Collection<? extends Instruction> insts) {
+        for (Instruction inst: insts) {
+            setParent(inst);
+        }
+        return this.insts().addAll(insts);
+    }
+
+    public List<Instruction> insts() {
+        return insts;
+    }
 
     @Override
     public String toString() {

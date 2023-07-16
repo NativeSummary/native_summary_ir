@@ -2,8 +2,10 @@ package moe.wjk.ir;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Module implements Serializable {
@@ -33,21 +35,31 @@ public class Module implements Serializable {
     }
 
     /**
-     * 对Function去重以确保正确性，目前Function和Module之间还不耦合，所以直接添加即可。
+     * Function如果重了，直接把指令合到一起。
+     * 目前Function和Module之间还不耦合，所以直接添加即可。
      * @param ms
      * @return
      */
     public static Module merge(List<Module> ms) {
         if (ms.size() == 0) return null;
         Module ret = ms.get(0);
-        Set<String> dup = new HashSet<>();
+        Map<String, Function> dup = new HashMap<>();
         for (Module m: ms) {
+            if (m == ret) { continue; }
             for(Function f: m.funcs) {
-                boolean added = dup.add(f.clazz+"\t"+f.name+"\t"+f.signature);
-                if (!added) {
-                    System.out.println(String.format("Warning: duplicate function: %s %s %s", f.clazz, f.name, f.signature));
-                }
-                if (m != ret && added) {
+                Function prev = dup.putIfAbsent(f.clazz+"\t"+f.name+"\t"+f.signature, f);
+                if (prev != null) {
+                    if (!prev.name.equals("JNI_OnLoad")) {
+                        System.out.println(String.format("Warning: duplicate function: %s %s %s", f.clazz, f.name, f.signature));
+                    }
+                    // remove ownership
+                    for (Instruction inst: f.insts()) {
+                        if (inst.parent == f) {
+                            inst.parent = null;
+                        }
+                    }
+                    prev.addAll(f.insts());
+                } else {
                     ret.funcs.add(f);
                 }
             }

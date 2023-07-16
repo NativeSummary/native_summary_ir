@@ -17,7 +17,7 @@ public class NumValueNamer {
     public void visitFunc(Function f) {
         count = 0;
         f.params.forEach(this::visitValue);
-        f.insts.forEach(this::visitInst);
+        f.insts().forEach(this::visitInst);
     }
 
     public void visitInst(Instruction i) {

@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.StringJoiner;
 
 public abstract class Instruction extends User implements Serializable {
+    public Function parent; // 所在函数。当所在函数不是当前函数的时候，意味着引用了JNI_OnLoad
+
     public String preComments; // 指令前一行放注释
     public String comments; // 指令行末的注释
     public String postComments; // 指令后一行注释
@@ -20,7 +22,16 @@ public abstract class Instruction extends User implements Serializable {
         }
         b.append(getOpString());
         StringJoiner sj = new StringJoiner(", ", " ", "");
-        operands.forEach(use -> sj.add(use.value.toValueString()));
+        operands.forEach(use -> {
+            Value val = use.value;
+            String str = val.toValueString();
+            // handle reference to other function
+            if (val instanceof Instruction && ((Instruction) val).parent != parent) {
+                assert str.charAt(0) == '%';
+                str = "@" + str.substring(1) + "("+ (((Instruction) val).parent).name + ")";
+            }
+            sj.add(str);
+        });
         b.append(sj);
         if (comments != null) {
             b.append("     ; ").append(comments);

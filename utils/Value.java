@@ -33,7 +33,7 @@ public class Value implements Serializable {
     }
 
     public String toValueString() {
-        if (type!=null && type.ty != null && type.ty == Type.BaseType.VOID) {
+        if (type != null && type.ty != null && type.ty == Type.BaseType.VOID) {
             return null;
         }
         if (name != null) {
