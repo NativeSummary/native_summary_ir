@@ -44,7 +44,7 @@ public class Type implements Serializable {
         if (typedef != null) {
             return typedef;
         } else {
-            return ty.toString().toLowerCase() + "*".repeat(pointerLevel);
+            return ty.toString().toLowerCase() + new String(new char[pointerLevel]).replace('\0', '*');
         }
     }
 }

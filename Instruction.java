@@ -11,13 +11,13 @@ public abstract class Instruction extends User implements Serializable {
 
     @Override
     public String toString() {
-        var b = new StringBuilder();
-        var valStr = toValueString();
+        StringBuilder b = new StringBuilder();
+        String valStr = toValueString();
         if (valStr != null && valStr.length() > 0) {
             b.append(valStr).append(" = ");
         }
         b.append(getOpString());
-        var sj = new StringJoiner(", ", " ", "");
+        StringJoiner sj = new StringJoiner(", ", " ", "");
         oprands.forEach(use -> sj.add(use.value.toValueString()));
         b.append(sj);
         if (comments != null) {
