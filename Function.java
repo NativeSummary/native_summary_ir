@@ -1,8 +1,8 @@
-package moe.wjk.ir;
+package org.example.nativesummary.ir;
 
-import moe.wjk.ir.inst.Call;
-import moe.wjk.ir.utils.Type;
-import moe.wjk.ir.value.Param;
+import org.example.nativesummary.ir.inst.Call;
+import org.example.nativesummary.ir.utils.Type;
+import org.example.nativesummary.ir.value.Param;
 
 import java.io.Serializable;
 import java.util.ArrayList;

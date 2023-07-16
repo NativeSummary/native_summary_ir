@@ -1,6 +1,6 @@
-package moe.wjk.ir.value;
+package org.example.nativesummary.ir.value;
 
-import moe.wjk.ir.utils.Value;
+import org.example.nativesummary.ir.utils.Value;
 
 public final class Top extends Value {
     @Override

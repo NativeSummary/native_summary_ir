@@ -1,14 +1,10 @@
-package moe.wjk.ir;
+package org.example.nativesummary.ir;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import moe.wjk.ir.value.Param;
 
 public class Module implements Serializable {
     public String apk_name;

@@ -1,11 +1,11 @@
-package moe.wjk.ir;
+package org.example.nativesummary.ir;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import moe.wjk.ir.utils.Constant;
-import moe.wjk.ir.utils.Type;
-import moe.wjk.ir.utils.Value;
+import org.example.nativesummary.ir.utils.Constant;
+import org.example.nativesummary.ir.utils.Type;
+import org.example.nativesummary.ir.utils.Value;
 
 public class NumValueNamer {
     long count = 0;

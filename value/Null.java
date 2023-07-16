@@ -1,7 +1,6 @@
-package moe.wjk.ir.value;
+package org.example.nativesummary.ir.value;
 
-import moe.wjk.ir.utils.Constant;
-import moe.wjk.ir.utils.Value;
+import org.example.nativesummary.ir.utils.Constant;
 
 public final class Null extends Constant {
     public static Null instance = new Null();

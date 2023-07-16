@@ -1,7 +1,7 @@
-package moe.wjk.ir;
+package org.example.nativesummary.ir;
 
-import moe.wjk.ir.utils.User;
-import moe.wjk.ir.utils.Value;
+import org.example.nativesummary.ir.utils.User;
+import org.example.nativesummary.ir.utils.Value;
 
 import java.io.Serializable;
 import java.util.StringJoiner;

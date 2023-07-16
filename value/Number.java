@@ -1,8 +1,7 @@
-package moe.wjk.ir.value;
+package org.example.nativesummary.ir.value;
 
-import moe.wjk.ir.utils.Constant;
-import moe.wjk.ir.utils.Type;
-import moe.wjk.ir.utils.Value;
+import org.example.nativesummary.ir.utils.Constant;
+import org.example.nativesummary.ir.utils.Type;
 
 public class Number extends Constant {
     public java.lang.Number val;

@@ -1,8 +1,8 @@
-package moe.wjk.ir.inst;
+package org.example.nativesummary.ir.inst;
 
 import java.util.Arrays;
 
-import moe.wjk.ir.Instruction;
+import org.example.nativesummary.ir.Instruction;
 
 public class Call extends Instruction {
     // keep sync with JNIValue

@@ -1,4 +1,4 @@
-package moe.wjk.ir.utils;
+package org.example.nativesummary.ir.utils;
 
 public class Constant extends Value{
 }

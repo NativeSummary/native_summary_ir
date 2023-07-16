@@ -1,4 +1,4 @@
-package moe.wjk.ir.utils;
+package org.example.nativesummary.ir.utils;
 
 import java.io.Serializable;
 

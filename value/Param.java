@@ -1,7 +1,7 @@
-package moe.wjk.ir.value;
+package org.example.nativesummary.ir.value;
 
-import moe.wjk.ir.utils.Type;
-import moe.wjk.ir.utils.Value;
+import org.example.nativesummary.ir.utils.Type;
+import org.example.nativesummary.ir.utils.Value;
 
 public class Param extends Value {
     public Param(String n, Type t) {

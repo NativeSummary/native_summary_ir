@@ -1,6 +1,6 @@
-package moe.wjk.ir.inst;
+package org.example.nativesummary.ir.inst;
 
-import moe.wjk.ir.Instruction;
+import org.example.nativesummary.ir.Instruction;
 
 public class Phi extends Instruction {
     @Override
