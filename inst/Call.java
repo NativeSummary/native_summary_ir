@@ -19,9 +19,9 @@ public class Call extends Instruction {
     public String toString() {
         if (callsite != 0) {
             if (comments == null) {
-                comments = String.format("context: %s, callsite: %s", Arrays.toString(callstring), Long.toHexString(callsite));
+                comments = String.format("context: %s, callsite: 0x%s", Arrays.toString(callstring), Long.toHexString(callsite));
             } else {
-                comments += String.format(" context: %s, callsite: %s", Arrays.toString(callstring), Long.toHexString(callsite));
+                comments += String.format(" context: %s, callsite: 0x%s", Arrays.toString(callstring), Long.toHexString(callsite));
             }
         }
         return super.toString();
