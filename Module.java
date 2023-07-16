@@ -45,7 +45,7 @@ public class Module implements Serializable {
         Module ret = ms.get(0);
         Map<String, Function> dup = new HashMap<>();
         for (Module m: ms) {
-            if (m == ret) { continue; }
+            //  { continue; }
             for(Function f: m.funcs) {
                 Function prev = dup.putIfAbsent(f.clazz+"\t"+f.name+"\t"+f.signature, f);
                 if (prev != null) {
@@ -60,7 +60,9 @@ public class Module implements Serializable {
                     }
                     prev.addAll(f.insts());
                 } else {
-                    ret.funcs.add(f);
+                    if (m != ret) {
+                        ret.funcs.add(f);
+                    }
                 }
             }
         }
