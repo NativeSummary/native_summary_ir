@@ -1,6 +1,6 @@
 # native summary IR
 
-1. Type system is currently unused. backend uses an analysis to find the soot type.
+1. IR type is mostly unused. backend uses an analysis to find the soot type.
 1. When number type is not known, prefer Long.
 1. All `CallXXXMethodA/CallXXXMethodV` should be converted to non A/V varient before generate to IR.
 1. JNI_OnLoad must be first in module func list.

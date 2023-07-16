@@ -41,6 +41,13 @@ public class Function implements Serializable {
         return this.insts().addAll(insts);
     }
 
+    public boolean addAll(int index, Collection<? extends Instruction> insts) {
+        for (Instruction inst: insts) {
+            setParent(inst);
+        }
+        return this.insts().addAll(index, insts);
+    }
+
     public List<Instruction> insts() {
         return insts;
     }
