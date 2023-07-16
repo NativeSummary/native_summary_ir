@@ -1,3 +1,9 @@
 # native summary IR
 
 1. type system is currently unused. backend uses an analysis to find the soot type.
+
+### Function
+
+It's possible that clazz is null.
+1. dynamic registered function(registeredBy != null). because clazz resolution is delayed.
+2. JNI_OnLoad. this normally will not be converted to actual java function.

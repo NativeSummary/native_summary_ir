@@ -1,5 +1,6 @@
 package moe.wjk.ir;
 
+import moe.wjk.ir.inst.Call;
 import moe.wjk.ir.utils.Type;
 import moe.wjk.ir.value.Param;
 
@@ -19,12 +20,15 @@ public class Function implements Serializable {
     public List<Param> params = new ArrayList<>();
     public Type returnType;
     public String comment;
+    public Call registeredBy;
 
     @Override
     public String toString() {
         String declare = insts != null ? "define" : "declare";
         String processedClazz;
-        if (clazz.charAt(0) == 'L') {
+        if (clazz == null) {
+            processedClazz = "";
+        } else if (clazz.charAt(0) == 'L') {
             processedClazz = clazz.substring(1, clazz.length()-1);
             processedClazz = processedClazz.replace('/', '.');
         } else {
@@ -36,7 +40,11 @@ public class Function implements Serializable {
         for (Param p: params) {
             sj.add(p.toString());
         }
-        sb.append(sj.toString()).append("{\n");
+        sb.append(sj.toString()).append("{");
+        if (registeredBy != null) {
+            sb.append(" ; dynreg");
+        }
+        sb.append("\n");
         for (Instruction i: insts) {
             sb.append("  ").append(i.toString()).append("\n");
         }

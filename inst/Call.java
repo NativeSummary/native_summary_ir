@@ -17,6 +17,13 @@ public class Call extends Instruction {
 
     @Override
     public String toString() {
-        return super.toString() + String.format("\t ; context: %s, callsite: %s", Arrays.toString(callstring), Long.toHexString(callsite));
+        if (callsite != 0) {
+            if (comments == null) {
+                comments = String.format("context: %s, callsite: %s", Arrays.toString(callstring), Long.toHexString(callsite));
+            } else {
+                comments += String.format(" context: %s, callsite: %s", Arrays.toString(callstring), Long.toHexString(callsite));
+            }
+        }
+        return super.toString();
     }
 }
