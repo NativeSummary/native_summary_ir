@@ -41,6 +41,9 @@ public class Function implements Serializable {
             sb.append("  ").append(i.toString()).append("\n");
         }
         sb.append("}");
-        return "; " + comment + "\n" + sb.toString();
+        if (comment != null) {
+            sb.insert(0, "; " + comment + "\n");
+        }
+        return sb.toString();
     }
 }
