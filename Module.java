@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import moe.wjk.ir.value.Param;
+
 public class Module implements Serializable {
     public String apk_name;
     public String so_name;
@@ -58,6 +60,12 @@ public class Module implements Serializable {
                             inst.parent = null;
                         }
                     }
+                    // // fix param
+                    // assert prev.params.size() == f.params.size();
+                    for (int i=0;i<f.params.size();i++) {
+                        f.params.get(i).replaceAllUseWith(prev.params.get(i));
+                    }
+
                     prev.addAll(f.insts());
                 } else {
                     if (m != ret) {
