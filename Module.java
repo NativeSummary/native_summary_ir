@@ -45,7 +45,7 @@ public class Module implements Serializable {
         for (Module m: ms) {
             //  { continue; }
             for(Function f: m.funcs) {
-                Function prev = dup.putIfAbsent(f.clazz+"\t"+f.name+"\t"+f.signature, f);
+                Function prev = dup.putIfAbsent(f.clazz == null? String.valueOf(System.identityHashCode(f.registeredBy)) : f.clazz+"\t"+f.name+"\t"+f.signature, f);
                 if (prev != null) {
                     if (!prev.name.equals("JNI_OnLoad")) {
                         System.out.println(String.format("Warning: duplicate function: %s %s %s", f.clazz, f.name, f.signature));
